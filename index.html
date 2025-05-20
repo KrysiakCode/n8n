@@ -1,56 +1,11 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-  <meta charset="UTF-8" />
-  <title>Moje podsumowania</title>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 2em auto; }
-    .entry { border: 1px solid #ddd; padding: 1em; margin-bottom: 1em; border-radius: 8px; }
-    .source { font-weight: bold; color: #555; }
-    .time { font-size: 0.9em; color: #888; }
-    pre { white-space: pre-wrap; }
-  </style>
+  <meta charset="UTF-8">
+  <title>Strona testowa</title>
 </head>
 <body>
-  <h1>📚 Moje podsumowania</h1>
-  <div id="entries">Ładowanie...</div>
-
-  <script>
-    const SUPABASE_URL = 'https://ziengufbvwaljfsnrnnv.supabase.co';
-    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InppZW5ndWZidndhbGpmc25ybm52Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc3MTg1NzQsImV4cCI6MjA2MzI5NDU3NH0.Yms-LMfi0njRhdlbkwez6-T8OkgH2ltVbSh0REKued0';
-
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-    async function loadData() {
-      const { data, error } = await supabase
-        .from('summaries')
-        .select('*')
-        .order('created_at', { ascending: false });
-
-      if (error) {
-        document.getElementById('entries').innerText = 'Błąd ładowania danych 😢';
-        console.error(error);
-        return;
-      }
-
-      const container = document.getElementById('entries');
-      container.innerHTML = '';
-
-      data.forEach(entry => {
-        const div = document.createElement('div');
-        div.className = 'entry';
-        div.innerHTML = `
-          <div class="source">📌 Źródło: ${entry.source || 'brak'}</div>
-          <div class="time">🕒 ${new Date(entry.created_at).toLocaleString()}</div>
-          <p><strong>🔹 Oryginał:</strong><br/><pre>${entry.original_text}</pre></p>
-          <p><strong>🔸 Podsumowanie:</strong><br/><pre>${entry.summary}</pre></p>
-        `;
-        container.appendChild(div);
-      });
-    }
-
-    loadData();
-  </script>
+  <h1>Witaj na mojej stronie 🎉</h1>
+  <p>Ta strona działa przez GitHub Pages!</p>
 </body>
 </html>
